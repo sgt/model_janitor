@@ -1,10 +1,8 @@
-model_janitor
-==============
+= model_janitor
 
 Sanitize model's attributes before saving.
 
-Example
-=======
+== Example
 
 Model:
 
