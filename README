@@ -1,0 +1,14 @@
+model_janitor
+==============
+
+Sanitize model's attributes before saving.
+
+Example
+=======
+
+Model:
+
+	class Person < ActiveRecord::Base
+		sanitizes :only => [:name, :bio]
+		strips_tags :except => [:name, :bio]
+	end
