@@ -15,7 +15,7 @@ module ModelJanitor
         def matches?(subject)
           @subject = subject.new
           @subject[@attr_name] = "<b>Lorem</b> <div>ipsum</div>"
-          @subject.save
+          @subject.save_with_validation(false)
           if strip_tags_mode?
             @subject[@attr_name] == "Lorem ipsum"
           else
