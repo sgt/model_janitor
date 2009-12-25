@@ -13,13 +13,13 @@ module ModelJanitor
         end
         
         def matches?(subject)
-          s = subject.new
-          s[@attr_name] = "<b>Lorem</b> <div>ipsum</div>"
-          s.save
+          @subject = subject.new
+          @subject[@attr_name] = "<b>Lorem</b> <div>ipsum</div>"
+          @subject.save
           if strip_tags_mode?
-            s[@attr_name] == "Lorem ipsum"
+            @subject[@attr_name] == "Lorem ipsum"
           else
-            s[@attr_name] == "<b>Lorem</b> ipsum"
+            @subject[@attr_name] == "<b>Lorem</b> ipsum"
           end
         end
         
