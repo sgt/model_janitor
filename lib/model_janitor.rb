@@ -6,10 +6,9 @@ module ModelJanitor # :nodoc:
     def self.included(base)
       base.extend(ClassMethods)
     end
-    
+  
     module ClassMethods # :nodoc:
-      include ActionView::Helpers
-      
+    
       def sanitizes(*attr_names)
         attr_names.flatten!
         options = attr_names.extract_options!
@@ -18,11 +17,12 @@ module ModelJanitor # :nodoc:
           before_save { |record| Sanitize.clean!(record[a], mode) unless record[a].nil? }
         end
       end
-      
+    
       def strips_tags(*attr_names)
         sanitizes attr_names, :mode=>{}
       end
-      
+    
     end
+  
   end
 end

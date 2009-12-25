@@ -1,2 +1,5 @@
 require 'model_janitor'
-ActiveRecord::Base.send :include, ModelJanitor::ActiveRecord
+
+if Object.const_defined?('ActiveRecord')
+  ActiveRecord::Base.send(:include, ModelJanitor::ActiveRecord)
+end
