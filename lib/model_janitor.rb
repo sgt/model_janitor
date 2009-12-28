@@ -14,7 +14,11 @@ module ModelJanitor # :nodoc:
         options = attr_names.extract_options!
         mode = options.has_key?(:mode) ? options[:mode] : Sanitize::Config::BASIC
         attr_names.each do |a|
-          before_save { |record| Sanitize.clean!(record[a], mode) unless record[a].nil? }
+          before_save do |record| 
+            puts ">>> #{record.send(a)}"
+            Sanitize.clean!(record.send(a), mode) unless record.send(a).nil?
+            puts ">>> #{record.send(a)}"
+          end
         end
       end
     
