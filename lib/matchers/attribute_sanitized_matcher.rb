@@ -14,21 +14,21 @@ module ModelJanitor
         
         def matches?(subject)
           @subject = subject.new
-          @subject[@attr_name] = "<b>Lorem</b> <div>ipsum</div>"
+          @subject.send("#{@attr_name}=", "<a href=\"http://lala.com/\">Lorem</a> <div>ipsum</div>")
           @subject.save_with_validation(false)
           if strip_tags_mode?
-            @subject[@attr_name] == "Lorem ipsum"
+            @subject.send(@attr_name) == "Lorem ipsum"
           else
-            @subject[@attr_name] == "<b>Lorem</b> ipsum"
+            @subject.send(@attr_name) == "<a href=\"http://lala.com/\">Lorem</a> ipsum"
           end
         end
         
         def failure_message
-          "Should " + mode_message
+          "Should #{mode_message}, got '#{@subject.send(@attr_name)}'"
         end
         
         def negative_failure_message
-          "Should not " + mode_message
+          "Should not #{mode_message}, got '#{@subject.send(@attr_name)}'"
         end
         
         def description
