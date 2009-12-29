@@ -16,6 +16,7 @@ module ModelJanitor # :nodoc:
         attr_names.each do |a|
           before_save do |record|
             Sanitize.clean!(record.send(a), mode) unless record.send(a).nil?
+            record.send(a).gsub!(/&#13;/m, '')
           end
         end
       end
