@@ -19,7 +19,7 @@ module ModelJanitor
           if strip_tags_mode?
             @subject.send(@attr_name) == "Lorem ipsum"
           else
-            @subject.send(@attr_name) == "<a href=\"http://lala.com/\">Lorem</a> ipsum"
+            @subject.send(@attr_name) == "<a href=\"http://lala.com/\" rel=\"nofollow\">Lorem</a> ipsum"
           end
         end
         

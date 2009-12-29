@@ -13,6 +13,6 @@ class PersonTest < ActiveSupport::TestCase
     
     should_strip_tags :name
     should_sanitize :bio
-    should_sanitize :relaxed_bio
+    #should_sanitize :relaxed_bio
   end
 end
